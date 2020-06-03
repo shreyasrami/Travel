@@ -1,0 +1,120 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="icon" href="{% static 'images/logo.jpg' %}" type="image/jpg">
+    <link rel="stylesheet" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/form.css' %}">
+
+</head>
+<body class="bg">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 col-md-3">
+                <form class = "form-container" action="register" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="First">First Name</label>
+                      <input type="text" class="form-control c" id="First" name="First_Name" required>
+                    </div><br>
+                    <div class="form-group">
+                      <label for="Last">Last Name</label>
+                      <input type="text" class="form-control c" id="Last" name="Last_Name" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="Username">Username</label>
+                        <input type="text" class="form-control c" id="Username" name="Username" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="Email">Email Address</label>
+                        <input type="email" class="form-control c" id="Email" name="Email" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="Password1">Password</label>
+                        <input type="password" class="form-control c" id="Password1" name="Password1" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="Password2">Confirm Password</label>
+                        <input type="password" class="form-control c" id="Password2" name="Password2" required>
+                    </div>
+                    <div class="form-group">
+                      <a href="login"><p style="color: cyan;">Already registered ? Login here</p></a>
+                    </div>
+                    <button type="submit" id="rg" class="btn btn-primary btn-block" disabled>Register</button><br>
+                    <div class="alert {{message_class}}">{{message}}</div>
+                  </form>
+                  <button type="button" class = 'tt btn btn-link'><a style="color: wheat;" href="/">Go back to Home page</a></button>
+  
+            </div>
+        </div>
+    </div>
+    
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+    <script>
+        $('#rg').css('opacity',0.5)
+        var f = $('#First')
+        var l = $('#Last')
+        var u = $('#Username')
+        var e = $('#Email')
+        var p = $('#Password1')
+        var cp = $('#Password2')
+        
+        $('.c').keyup(function(){
+            if($.trim(f.val()) != '' && $.trim(l.val()) != '' && $.trim(u.val()) != '' && $.trim(e.val()) != ''){
+                if($.trim(p.val()).length >= 6 && $.trim(cp.val()).length >= 6){
+                    $('#rg').prop('disabled',false).css({'opacity':1,'cursor':'pointer'})
+                }else{
+                    $('#rg').prop('disabled',true).css('opacity',0.5)
+                }
+            }else{
+                $('#rg').prop('disabled',true).css('opacity',0.5)
+            }
+        })
+    </script>
+  
+</body>
+</html>
+
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> New User Registration</title>
+</head>
+<body>
+    
+    <form action = "register" method = "POST">
+        {% csrf_token %}
+        First Name       : <input type = 'text' name = "First_Name"><br><br>
+        Last Name        : <input type = 'text' name = "Last_Name"><br><br>
+        Username         : <input type = 'text' name = "Username"><br><br>
+        Email            : <input type = 'email' name = "Email"><br><br>
+        Password         : <input type = 'password' name = "Password1"><br><br>
+        Confirm Password : <input type = 'password' name = "Password2"><br><br><br>
+        
+        <input type = 'submit'>
+
+
+
+    </form>
+    <div>
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
+-->
+
+

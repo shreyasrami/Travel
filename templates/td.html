@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/form.css' %}">
+    <title>Add New Destination</title>
+    <link rel="icon" href="{% static 'images/logo.jpg' %}" type="image/jpg">
+    
+</head>
+<body class="bd">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+                <form class="form-container fca" action = "td" method = "POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                
+                    <button class = "btn btn-success btn-block"  type = "submit">ADD</button><br>
+                    <div class="alert {{message_class}}">{{message}}</div>
+                </form>
+                <button type="button" class = 'tt btn btn-link'><a style="color: wheat;" href="/">Go back to Home page</a></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="{% static 'images/logo.jpg' %}" type="image/jpg">
+    <link rel="stylesheet" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/form.css' %}">
+
+</head>
+<body class="bg">
+
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 col-md-3">
+                <form class = "form-container fc" action="login" method="POST">
+                  {% csrf_token %}
+                    <div class="form-group">
+                      <label for="Username">Username</label>
+                      <input type="text" class="form-control c" id="ue" name="username" required>
+                      <small class="form-text text-muted">We'll never share your details with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="Password">Password</label>
+                      <input type="password" class="form-control c" id="pd" name="password" required>
+                    </div>
+                    <div class="form-group">
+                      <a href="register"><p style="color: cyan;">Not registered yet ? Register here</p></a>
+                    </div>
+                    <button id="ln" type="submit" class="btn btn-primary btn-block" disabled>Login</button><br>
+                    <div class="alert {{message_class}}">{{message}}</div>
+                  </form>
+                  <button type="button" class = 'tt btn btn-link'><a style="color: wheat;" href="/">Go back to Home page</a></button>
+  
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+    <script>
+      $('#ln').css('opacity',0.5)
+      var u = $('#ue')
+      var p = $('#pd')
+      
+      $('.c').keyup(function(){
+        if($.trim(u.val()) != ''){
+          if($.trim(p.val()).length >= 6){
+              $('#ln').prop('disabled',false).css({'opacity':1,'cursor':'pointer'})
+          }else{
+              $('#ln').prop('disabled',true).css('opacity',0.5)
+          }
+        }else{
+          $('#ln').prop('disabled',true).css('opacity',0.5)
+        }
+      })
+    </script>
+  
+</body>
+</html>
+

@@ -1,0 +1,42 @@
+#id_img{
+    color: aqua;
+}
+label{
+    color: white;
+}
+.bd{
+    background: url('../images/footer_1.jpg');
+    background-size: 1950px;
+
+}
+.bg{
+    background: url('../images/log.jpg');
+    background-size: 1550px;
+}
+.fc{
+    position: absolute;
+    top: 25vh;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+.fca{
+    position: absolute;
+    top: 5vh;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+.tt{
+    position: absolute;
+    left: 40vw;
+    top: 0vh;
+}
+@media only screen and (max-width: 992px){
+    .ss{
+        padding-left: 3em;
+    }
+
+}
+
+
