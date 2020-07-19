@@ -18,7 +18,13 @@
 <link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
 <link rel="stylesheet" href="{% static 'styles/form.css' %}">
-
+<style>
+	.imagefit{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+</style>
 
 </head>
 <body>
@@ -291,7 +297,7 @@
 						<div class="destination item">
 							<div class="destination_image">
 								
-								<img src="{{dest.img.url}}" alt="img">
+								<img src="{{dest.img.url}}" alt="img" class="imagefit">
 							
 								{% if dest.offer %}
 								<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
